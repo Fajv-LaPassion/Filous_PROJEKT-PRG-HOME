@@ -29,3 +29,23 @@ class Running extends Workout {
     }
 }
 
+class StrengthTraining extends Workout {
+    sets:number;
+    reps:number;
+
+    constructor(duration:number, Intensity:number, sets:number, reps:number){
+        super(duration, Intensity);
+        if (sets <= 0 || reps <= 0) {
+            throw new Error("Hodnota musí být větší než 0!!");
+        }
+        this.sets = sets;
+        this.reps = reps;
+    }
+    calculateCaloriesBurned(): number {
+        return this.duration * this.Intensity * this.sets * this.reps * 0.05;
+    }
+    getsummary(): string {
+        return `Posilování: Doba trvání: ${this.duration} minut, Intenzita: ${this.Intensity}, Série: ${this.sets}, Opakování: ${this.reps}, Spálené kalorie: ${this.calculateCaloriesBurned()} kcal.`;
+    }
+}
+
