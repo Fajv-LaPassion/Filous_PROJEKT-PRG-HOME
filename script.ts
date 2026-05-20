@@ -1,8 +1,10 @@
+import { workoutCatalog } from "./data";
+
 abstract class Workout {
     duration:number;
     Intensity:number;
     constructor(duration:number, Intensity:number){
-        if(duration <= 0|| Intensity <= 0){
+        if(duration < 0|| Intensity < 0){
             throw new Error("Hodnoty musí být větší než 0!!");
         }
         this.duration = duration;
@@ -16,7 +18,7 @@ class Running extends Workout {
     distance:number;
     constructor(duration:number, Intensity:number, distance:number){
         super(duration, Intensity);
-        if (distance <= 0) {
+        if (distance < 0) {
             throw new Error("Hodnota musí být větší než 0!!");
         }
         this.distance = distance;
@@ -35,7 +37,7 @@ class StrengthTraining extends Workout {
 
     constructor(duration:number, Intensity:number, sets:number, reps:number){
         super(duration, Intensity);
-        if (sets <= 0 || reps <= 0) {
+        if (sets < 0 || reps < 0) {
             throw new Error("Hodnota musí být větší než 0!!");
         }
         this.sets = sets;
@@ -49,3 +51,18 @@ class StrengthTraining extends Workout {
     }
 }
 
+const myWorkouts: Workout[] = [];
+
+workoutCatalog.forEach(item => {
+    if (item.type === 'running') {
+        myWorkouts.push(new Running(item.duration, item.Intensity, item.distance));
+    } else if (item.type === 'strength') {
+        myWorkouts.push(new StrengthTraining(item.duration, item.Intensity, item.sets, item.reps));
+    }
+});
+
+console.log("Souhrn tréninků:");
+myWorkouts.forEach(workout => {
+    console.log(workout.getsummary());
+    console.log('Spálené kalorie: ' + workout.calculateCaloriesBurned() + ' kcal');
+});
