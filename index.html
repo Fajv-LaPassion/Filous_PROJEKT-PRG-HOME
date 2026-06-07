@@ -3,10 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
     <title>Fitness Kalkulačka</title>
 </head>
-<body>
+<body class="w3-content">
     <script type="module" src="script.js"></script>
+    <script>
+        window.addEventListener("DOMContentLoaded", function() { renderResult(); }, false);
+    </script>
+
+    <div class="w3-panel w3-blue w3-round-large">
+        <h1><img src="./logo.png"/>&nbsp;&nbsp;Fitness Kalkulačka</h1>
+    </div>
+            
+    <table id="myTable" name="myTable" class="w3-table w3-striped w3-border">
+        <thead>
+            <tr>
+                <th>Activity</th>
+                <th class="w3-right-align">Burned Calories</th>
+            </tr>
+        </thead>
+    </table>
+
 </body>
 </html>
