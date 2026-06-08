@@ -15,15 +15,47 @@
     <div class="w3-panel w3-blue w3-round-large">
         <h1><img src="./logo.png"/>&nbsp;&nbsp;Fitness Kalkulačka</h1>
     </div>
-            
+
+    <button onclick="javascript:openForm(0, 'frmRunning');" class="w3-button w3-green w3-large">+ Běh</button>
+
     <table id="myTable" name="myTable" class="w3-table w3-striped w3-border">
         <thead>
             <tr>
-                <th>Activity</th>
-                <th class="w3-right-align">Burned Calories</th>
+                <th>Aktivita</th>
+                <th class="w3-right-align">Spálené kalorie</th>
             </tr>
         </thead>
     </table>
+
+    <div id="frmRunning" class="w3-modal">
+        <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+
+        <div class="w3-center w3-yellow"><br/>
+            <span onclick="document.getElementById('frmRunning').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+            <img src="running.png" alt="BĚH" style="width: 64px;height: 64px;" class="w3-circle w3-margin-top">
+            <br/>
+            <br/>
+        </div>
+
+        <form class="w3-container" action="javascript:void(0);">
+            <input  type="hidden" id="runningId" name="runningId">
+            <div class="w3-section">
+                <label><b>Doba trvání (v minutách)</b></label>
+                <input class="w3-input w3-border" type="number" placeholder="" id="runningDuration" name="runningDuration" required>
+                <label><b>Intenzita (1-10)</b></label>
+                <input class="w3-input w3-border" type="number" placeholder="" id="runningIntensity" name="runningIntensity" required>
+                <label><b>Vzdálenost (v km)</b></label>
+                <input class="w3-input w3-border" type="number" placeholder="" id="runningDistance" name="runningDistance" required>
+            </div>
+        </form>
+
+        <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+            <button onclick="document.getElementById('frmRunning').style.display='none'" type="button" class="w3-button w3-red">Zrušit</button>
+            <button onclick="javascript:saveItem('frmRunning');" type="button" class="w3-button w3-green">Uložit</button>
+        </div>
+
+        </div>
+    </div>
 
 </body>
 </html>
