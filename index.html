@@ -16,15 +16,25 @@
         <h1><img src="./logo.png"/>&nbsp;&nbsp;Fitness Kalkulačka</h1>
     </div>
 
-    <button onclick="javascript:openForm(0, 'frmRunning');" class="w3-button w3-green w3-large">+ Běh</button>
-
-    <table id="myTable" name="myTable" class="w3-table w3-striped w3-border">
+    <button onclick="javascript:openForm(0, 'frmRunning');" class="w3-button w3-green w3-round w3-large">+ Běh</button>
+    <button onclick="javascript:openForm(0, 'frmStrength');" class="w3-button w3-green w3-round w3-large">+ Posilování</button>
+    <button onclick="javascript:delAllItems();" class="w3-button w3-red w3-round w3-large">Smazat vše</button>
+    <br/><br/>
+    <table id="myTable" name="myTable" class="w3-table w3-striped w3-bordered">
         <thead>
             <tr>
                 <th>Aktivita</th>
                 <th class="w3-right-align">Spálené kalorie</th>
+                <th>&nbsp;</th>
             </tr>
         </thead>
+        <tfoot>
+            <tr>
+                <th>Celkem</th>
+                <th id="kcalSUM" name="kcalSUM" class="w3-right-align"></th>
+                <th>&nbsp;</th>
+            </tr>
+        </tfoot>
     </table>
 
     <div id="frmRunning" class="w3-modal">
@@ -52,6 +62,38 @@
         <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
             <button onclick="document.getElementById('frmRunning').style.display='none'" type="button" class="w3-button w3-red">Zrušit</button>
             <button onclick="javascript:saveItem('frmRunning');" type="button" class="w3-button w3-green">Uložit</button>
+        </div>
+
+        </div>
+    </div>
+
+    <div id="frmStrength" class="w3-modal">
+        <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+
+        <div class="w3-center w3-yellow"><br/>
+            <span onclick="document.getElementById('frmStrength').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+            <img src="strength.png" alt="POSILOVÁNÍ" style="width: 64px;height: 64px;" class="w3-circle w3-margin-top">
+            <br/>
+            <br/>
+        </div>
+
+        <form class="w3-container" action="javascript:void(0);">
+            <input  type="hidden" id="strengthId" name="strengthId">
+            <div class="w3-section">
+                <label><b>Doba trvání (v minutách)</b></label>
+                <input class="w3-input w3-border" type="number" placeholder="" id="strengthDuration" name="strengthDuration" required>
+                <label><b>Intenzita (1-10)</b></label>
+                <input class="w3-input w3-border" type="number" placeholder="" id="strengthIntensity" name="strengthIntensity" required>
+                <label><b>Počet sérií</b></label>
+                <input class="w3-input w3-border" type="number" placeholder="" id="strengthSets" name="strengthSets" required>
+                <label><b>Počet opakování</b></label>
+                <input class="w3-input w3-border" type="number" placeholder="" id="strengthReps" name="strengthReps" required>
+            </div>
+        </form>
+
+        <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+            <button onclick="document.getElementById('frmStrength').style.display='none'" type="button" class="w3-button w3-red">Zrušit</button>
+            <button onclick="javascript:saveItem('frmStrength');" type="button" class="w3-button w3-green">Uložit</button>
         </div>
 
         </div>
